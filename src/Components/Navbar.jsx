@@ -28,13 +28,13 @@ function Navbar() {
   return (
     <nav className='bg-black text-white shadow-md fixed w-full top-0 left-0 z-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex h-14 sm:h-16 justify-between items-center'>
+        <div className='flex h-16 justify-between items-center'>
 
           {/* Logo */}
           <h1 className='text-lg sm:text-xl font-bold'><span className='text-blue-500'>Niki</span> Dev</h1>
 
           {/* Menu Desktop */}
-          <div className='hidden md:flex space-x-4 lg:space-x-8 items-center ml-auto'>
+          <div className='hidden md:flex space-x-6 items-center ml-auto'>
             <a href="#hero" className='hover:text-blue-500 transition-colors scroll-mt-16 text-sm lg:text-base'>Accueil</a>
             <a href="#about" className='hover:text-blue-500 transition-colors scroll-mt-16 text-sm lg:text-base'>À propos</a>
             <a href="#skills" className='hover:text-blue-500 transition-colors scroll-mt-16 text-sm lg:text-base'>Compétences</a>
@@ -46,7 +46,7 @@ function Navbar() {
           <div className='md:hidden'>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className='focus:outline-none text-2xl mt-2'
+              className='focus:outline-none'
             >
               {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </button>
