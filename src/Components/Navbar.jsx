@@ -20,21 +20,28 @@ function Navbar() {
     visible: { opacity: 1, y: 0 },
   };
 
-  // Fonction pour fermer le menu mobile au clic sur un lien
   const handleLinkClick = () => {
     setIsOpen(false);
   };
 
   return (
-    <nav className='bg-black text-white shadow-md fixed w-full top-0 left-0 z-50'>
+    // ✅ CORRECTION 1: shadow-lg au lieu de shadow-md (meilleure visibilité)
+    <nav className='bg-black text-white shadow-lg fixed w-full top-0 left-0 z-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex h-16 justify-between items-center'>
+        
+        {/* ✅ CORRECTION 2: Hauteur responsive */}
+        {/* h-14 (56px) sur mobile, h-16 (64px) sur desktop */}
+        <div className='flex h-14 sm:h-16 justify-between items-center'>
 
-          {/* Logo */}
-          <h1 className='text-lg sm:text-xl font-bold'><span className='text-blue-500'>Niki</span> Dev</h1>
+          {/* Logo - Taille responsive */}
+          {/* text-base (16px) mobile, text-lg (18px) tablette, text-xl (20px) desktop */}
+          <h1 className='text-base sm:text-lg md:text-xl font-bold'>
+            <span className='text-blue-500'>Niki</span> Dev
+          </h1>
 
           {/* Menu Desktop */}
-          <div className='hidden md:flex space-x-6 items-center ml-auto'>
+          {/* ✅ CORRECTION 3: Espacement optimisé (space-x-4 sur md, space-x-6 sur lg) */}
+          <div className='hidden md:flex space-x-4 lg:space-x-6 items-center ml-auto'>
             <a href="#hero" className='hover:text-blue-500 transition-colors scroll-mt-16 text-sm lg:text-base'>Accueil</a>
             <a href="#about" className='hover:text-blue-500 transition-colors scroll-mt-16 text-sm lg:text-base'>À propos</a>
             <a href="#skills" className='hover:text-blue-500 transition-colors scroll-mt-16 text-sm lg:text-base'>Compétences</a>
@@ -44,9 +51,11 @@ function Navbar() {
 
           {/* Hamburger Mobile */}
           <div className='md:hidden'>
+            {/* ✅ CORRECTION 4: Ajout de p-2 (padding) pour zone cliquable plus grande */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className='focus:outline-none'
+              className='focus:outline-none p-2'
+              aria-label="Toggle menu"
             >
               {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </button>
